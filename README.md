@@ -62,7 +62,7 @@ Then when further inspecting the naming convention that had the compliance issue
 After piecing together the different information found within the tags and policies found pertaining to the offending resource group I was able to determine that the RG was created by an intern who incorrectly named it, however it was still able to make a deployment regardless of the naming policy being incorrect.
 
 ## Findings and recommendations
-The naming policy for resource groups was set to audit instead of deny which allowed the hastily created RG to allow a deployment which cause a compliance alert. Changing the policy to one of "deny" would instead cause any incorrectly named resources to be denied and in turn stop any uneeded alerts within the org.
+The naming policy for resource groups was set to audit instead of deny which allowed the hastily created RG to allow a deployment which cause a compliance alert. Changing the naming policy from "audit" to "deny" would instead cause any incorrectly named resources to be denied and in turn stop any unnecessary alerts within the organization from occurring.
 
 ## What I learned
 - Resource Groups, names, and tags are security evidence, not merely administrative details.
