@@ -32,31 +32,31 @@ Live multi-user Azure training tenant, Microsoft Azure portal, Azure subscriptio
 ## Investigation
 The first step was to find any resource groups that had any titles that were named outside of the organizations standard naming patterns or policies. The standarized naming convention was RG- for each resource group and I was eventually able to find one with a title that started as "test": 
 
-![[photo 1 bad RG name.jpg]]
+<img width="3812" height="1810" alt="photo 1 bad RG name" src="https://github.com/user-attachments/assets/60a08209-0e52-4010-a6e4-dd32c178eeaf" />
 
 I then proceeded to investigate the resource found within:
 
-![[photo 2 found a resource.jpg]]
+<img width="3819" height="1818" alt="photo 2 found a resource" src="https://github.com/user-attachments/assets/9cc74f1b-815e-4df8-b20d-b239b0e6b62a" />
 
 The details of the resource weren't able to help much with determining what may have caused this resource group to be named incorrectly:
 
-![[photo 3 looked at details of the resource.jpg]]
+<img width="3803" height="1816" alt="photo 3 looked at details of the resource" src="https://github.com/user-attachments/assets/e2a50a01-838b-4ca4-829e-dfd7f098a350" />
 
 However upon inspecting the resource I could see that something was successfully deployed:
 
-![[photo 4 deployment found within the resource.jpg]]
+<img width="3810" height="1803" alt="photo 4 deployment found within the resource" src="https://github.com/user-attachments/assets/6acaa3b2-fc79-49d9-8962-1cc87cd7515a" />
 
 I determined it was worth taking a look at the tags of the parent resource to see what kind of info I could find:
 
-![[photo 5 the tags of the resource.jpg]]
+<img width="3817" height="1821" alt="photo 5 the tags of the resource" src="https://github.com/user-attachments/assets/2371120d-081d-4af1-a695-252e360e770d" />
 
 Looked at the policies in place with the parent resource group:
 
-![[photo 6 compliance issues found with the deployment.jpg]]
+<img width="3807" height="1827" alt="photo 6 compliance issues found with the deployment" src="https://github.com/user-attachments/assets/1f9b207b-1ef2-4093-8d33-c6832b3cf30e" />
 
 Then when further inspecting the naming convention that had the compliance issue I was able to see that it was set to an audit instead of deny policy:
 
-![[photo 7 found the policy was set to audit and should have been deny.jpg]]
+<img width="3796" height="1800" alt="photo 7 found the policy was set to audit and should have been deny" src="https://github.com/user-attachments/assets/7cd50141-86af-4251-9173-cbbdf6b0f860" />
 
 ## What broke / what surprised me
 After peicing together the different information found within the tags and policies found pertaining to the offending resource group I was able to determine that the RG was created by an intern who incorrectly named it, however it was still able to make a deployment regardless of the naming policy being incorrect.
