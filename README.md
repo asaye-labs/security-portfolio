@@ -38,15 +38,15 @@ I then proceeded to investigate the resource found within:
 
 <img width="3819" height="1818" alt="photo 2 found a resource" src="https://github.com/user-attachments/assets/9cc74f1b-815e-4df8-b20d-b239b0e6b62a" />
 
-The details of the resource weren't able to help much with determining what may have caused this resource group to be named incorrectly:
+The details of the resource weren't able to help much with determining what may have caused this resource group to be named incorrectly, however I was able to determine WHO was responsible, an intern named Jenkins:
 
 <img width="3803" height="1816" alt="photo 3 looked at details of the resource" src="https://github.com/user-attachments/assets/e2a50a01-838b-4ca4-829e-dfd7f098a350" />
 
-However upon inspecting the resource I could see that something was successfully deployed:
+Upon inspecting the resource I could see that something was successfully deployed:
 
 <img width="3810" height="1803" alt="photo 4 deployment found within the resource" src="https://github.com/user-attachments/assets/6acaa3b2-fc79-49d9-8962-1cc87cd7515a" />
 
-I determined it was worth taking a look at the tags of the parent resource to see what kind of info I could find:
+I determined it was worth taking a look at the tags of the parent resource to see what kind of info I could find and was able to see the associated value set to each name:
 
 <img width="3817" height="1821" alt="photo 5 the tags of the resource" src="https://github.com/user-attachments/assets/2371120d-081d-4af1-a695-252e360e770d" />
 
@@ -54,15 +54,15 @@ Looked at the policies in place with the parent resource group:
 
 <img width="3807" height="1827" alt="photo 6 compliance issues found with the deployment" src="https://github.com/user-attachments/assets/1f9b207b-1ef2-4093-8d33-c6832b3cf30e" />
 
-Then when further inspecting the naming convention that had the compliance issue I was able to see that it was set to an audit instead of deny policy:
+Then when further inspecting the naming convention that had the compliance issue I was able to see that it was set to an "audit: instead of "deny" policy:
 
 <img width="3796" height="1800" alt="photo 7 found the policy was set to audit and should have been deny" src="https://github.com/user-attachments/assets/7cd50141-86af-4251-9173-cbbdf6b0f860" />
 
 ## What broke / what surprised me
-After piecing together the different information found within the tags and policies found pertaining to the offending resource group I was able to determine that the RG was created by an intern who incorrectly named it, however it was still able to make a deployment regardless of the naming policy being incorrect.
+After piecing together the different information found within the tags and policies portals found pertaining to the offending resource group I was able to determine that the RG was created by an intern who incorrectly named it, however it was still able to make a deployment regardless of the naming policy being incorrect.
 
 ## Findings and recommendations
-The naming policy for resource groups was set to audit instead of deny which allowed the hastily created RG to allow a deployment which cause a compliance alert. Changing the naming policy from "audit" to "deny" would instead cause any incorrectly named resources to be denied and in turn stop any unnecessary alerts within the organization from occurring.
+The naming policy for resource groups was set to audit instead of deny which allowed the hastily created RG to allow a deployment which cause a compliance alert. In the future, changing the naming policy from "audit" to "deny" would instead cause any incorrectly named resources to be denied and in turn stop any unnecessary policy alerts within the organization from occurring.
 
 ## What I learned
 - Resource Groups, names, and tags are security evidence, not merely administrative details.
