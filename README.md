@@ -65,8 +65,8 @@ After peicing together the different information found within the tags and polic
 The naming policy for resource groups was set to audit instead of deny which allowed the hastily created RG to allow a deployment which cause a compliance alert. Changing the policy to one of "deny" would instead cause any incorrectly named resources to be denied and in turn stop any uneeded alerts within the org.
 
 ## What I learned
-• Resource Groups, names, and tags are security evidence, not merely administrative details.
-• Azure Resource Manager deployment history can reconstruct when and how a resource was created.
-• Azure Policy must be evaluated by both scope and effect; reporting noncompliance differs from preventing it.
-• Strong investigations connect multiple evidence sources instead of relying on a single portal view.
-• Next time, I would document the expected standard first, making it easier to distinguish an intentional exception from a governance failure.
+- Resource Groups, names, and tags are security evidence, not merely administrative details.
+- Azure Resource Manager deployment history can reconstruct when and how a resource was created.
+- Azure Policy must be evaluated by both scope and effect; reporting noncompliance differs from preventing it.
+- Strong investigations connect multiple evidence sources instead of relying on a single portal view.
+- Next time, I would document the expected standard first, making it easier to distinguish an intentional exception from a governance failure.
