@@ -1,5 +1,8 @@
 # [Operation Dead Deploy, "Investigating a Governence Bypass in Azure"]
 
+<img width="2172" height="724" alt="operation_dead_deploy_banner" src="https://github.com/user-attachments/assets/afadc76f-fab3-4a23-9821-0439ed18830a" />
+
+
 ## Scenario
 Someone with temporary Contributor access was able to create a billable resource that was hastily made without following any of the organizations typical governance standards that was somehow able bypass them and delpoy which in turn caused alerts to which I used Reader access to investigate.
 
