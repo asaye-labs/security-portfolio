@@ -3,7 +3,7 @@
 Documented cloud security investigations, built in a live Azure tenant
 (Mad Hat Labs, a multi-user training environment).
 
-Target role: SOC Analyst / Security Analyst
+Target role: SOC Analyst / Cloud Security Analyst
 Currently: IT Support Specialist | Dallas, TX
 Contact: the.asaye.email@gmail.com · www.linkedin.com/in/aaron-saye
 
