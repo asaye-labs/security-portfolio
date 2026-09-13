@@ -1,0 +1,49 @@
+# [Operation Dead Deploy, "Investigating a Governence Bypass in Azure"]
+
+## Scenario
+Someone with temporary Contributor access was able to create a billable resource that was hastily made without following any of the organizations typical governance standards that was somehow able bypass them and delpoy which in turn caused alerts to which I used Reader access to investigate.
+
+## Environment
+Live multi-user Azure training tenant, Microsoft Azure portal, Azure subscription and Resource Groups, Azure resource tags, Azure Resource Manager deployment history, Azure Policy compliance and assignment views, Reader access
+
+## Investigation
+The first step was to find any resource groups that had any titles that were named outside of the organizations standard naming patterns or policies. The standarized naming convention was RG- for each resource group in this Azure tenant and I was eventually able to find one with a title that started as "test": 
+
+![[Chapter 1 photo 1 bad RG name.jpg]]
+
+I then proceeded to investigate the resource found within:
+
+![[Chapter 1 photo 2 found a resource.jpg]]
+
+The details of the resource weren't able to help much with determining what may have caused this resource group to be named incorrectly:
+
+![[Chapter 1 photo 3 looked at details of the resource.jpg]]
+
+However upon inspecting the resource I could see that something was successfully deployed:
+
+![[Chapter 1 photo 4 deployment found within the resource.jpg]]
+
+I determined it was worth taking a look at the tags of the parent resource to see what kind of info I could find:
+
+![[Chapter 1 photo 5 the tags of the resource.jpg]]
+
+Looked at the policies in place with the parent resource group:
+
+![[Chapter 1 photo 6 compliance issues found with the deployment.jpg]]
+
+Then when further inspecting the naming convention that had the compliance issue I was able to see that it was set to an audit instead of deny policy:
+
+![[Chapter 1 photo 7 found the policy was set to audit and should have been deny.jpg]]
+
+## What broke / what surprised me
+After piecing together the different information found within the tags and policies found pertaining to the offending resource group I was able to determine that the RG was created by an intern who incorrectly named it, however it was still able to make a deployment regardless of the naming policy being incorrect.
+
+## Findings and recommendations
+The naming policy for resource groups was set to audit instead of deny which allowed the hastily created RG to allow a deployment which cause a compliance alert. Changing the policy to one of "deny" would instead cause any incorrectly named resources to be denied and in turn stop any uneeded alerts within the org.
+
+## What I learned
+• Resource Groups, names, and tags are security evidence, not merely administrative details.
+• Azure Resource Manager deployment history can reconstruct when and how a resource was created.
+• Azure Policy must be evaluated by both scope and effect; reporting noncompliance differs from preventing it.
+• Strong investigations connect multiple evidence sources instead of relying on a single portal view.
+• Next time, I would document the expected standard first, making it easier to distinguish an intentional exception from a governance failure.
