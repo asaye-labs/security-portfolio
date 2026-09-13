@@ -4,7 +4,7 @@
 
 
 ## Scenario
-Someone with temporary Contributor access was able to create a billable resource that was hastily made without following any of the organizations typical governance standards that was somehow able bypass them and delpoy which in turn caused alerts to which I used Reader access to investigate.
+Someone with temporary Contributor access was able to create a billable resource that was hastily made without following any of the organizations typical governance standards. It was somehow able bypass those standards and delpoy which in turn caused me to use my Reader access to look for any indications or alerts as to how that was possible.
 
 ## Environment
 Live multi-user Azure training tenant, Microsoft Azure portal, Azure subscription and Resource Groups, Azure resource tags, Azure Resource Manager deployment history, Azure Policy compliance and assignment views, Reader access
@@ -34,12 +34,12 @@ Looked at the policies in place with the parent resource group:
 
 <img width="3807" height="1827" alt="photo 6 compliance issues found with the deployment" src="https://github.com/user-attachments/assets/1f9b207b-1ef2-4093-8d33-c6832b3cf30e" />
 
-Then when further inspecting the naming convention that had the compliance issue I was able to see that it was set to an "audit: instead of "deny" policy:
+When further inspecting the naming convention that had the compliance issue I was able to see that it was set to an "audit" instead of "deny" policy:
 
 <img width="3796" height="1800" alt="photo 7 found the policy was set to audit and should have been deny" src="https://github.com/user-attachments/assets/7cd50141-86af-4251-9173-cbbdf6b0f860" />
 
 ## What broke / what surprised me
-After piecing together the different information found within the tags and policies portals found pertaining to the offending resource group I was able to determine that the RG was created by an intern who incorrectly named it, however it was still able to make a deployment regardless of the naming policy being incorrect.
+After piecing together the different information found within the tags and policies found pertaining to the offending resource group I was able to determine that the RG was created by an intern who incorrectly named it, however it was still able to make a deployment regardless of the naming policy being outside the orgs governance policies.
 
 ## Findings and recommendations
 The naming policy for resource groups was set to audit instead of deny which allowed the hastily created RG to allow a deployment which cause a compliance alert. In the future, changing the naming policy from "audit" to "deny" would instead cause any incorrectly named resources to be denied and in turn stop any unnecessary policy alerts within the organization from occurring.
