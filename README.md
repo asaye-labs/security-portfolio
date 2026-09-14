@@ -13,7 +13,7 @@ Contact: the.asaye.email@gmail.com · www.linkedin.com/in/aaron-saye
 | # | Title | Focus | Write-up |
 |---|-------|-------|----------|
 | 1 | Operation Dead Deploy | Governance forensics, deployment audit trail | [Lab Report](https://github.com/asaye-labs/security-portfolio/blob/main/Chapter%201%20Lab%3A%20Operation%20Dead%20Deploy.md) |
-| 2 | The Stolen Identity | App registration attack kill chain (Entra ID) | coming, week 2 |
+| 2 | The Stolen Identity | App registration attack kill chain (Entra ID) | [Lab Report](https://github.com/asaye-labs/security-portfolio/blob/main/Chapter%202%20Lab%3A%20The%20Stolen%20Identity.md) |
 | 3 | Privilege Audit | RBAC and least privilege | coming, week 3 |
 | 4 | Spin Up and Lock Down | Compute attack surface | coming, week 4 |
 | 5 | Network the Operative | Network segmentation | coming, week 5 |
